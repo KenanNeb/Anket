@@ -17,5 +17,14 @@ namespace Anket
             InitializeComponent();
         }
 
+        private void btn_save_Click(object sender, EventArgs e)
+        {
+            List<string> user = new()
+            {
+                //Name = textbx_FName.Text.ToString(),
+                
+            };
+        }
+       
     }
 }
