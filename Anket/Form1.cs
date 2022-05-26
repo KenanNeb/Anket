@@ -44,19 +44,38 @@ namespace Anket
 
         private void btn_load_Click(object sender, EventArgs e)
         {
-            var jsonString = String.Empty;
-            jsonString = File.ReadAllText($"{textbx_NameLoad}.json");
-            User infoUser = JsonConvert.DeserializeObject<User>(jsonString);
+            //var jsonString = String.Empty;
+            //jsonString = File.ReadAllText($"{textbx_NameLoad}.json");
+            //User infoUser = JsonConvert.DeserializeObject<User>(jsonString);
 
-            textbx_FName.Text = infoUser.Name;
-            textbx_surname.Text = infoUser.Surname;
-            textbx_Patronymic.Text = infoUser.Patronymic;
-            textbx_Country.Text = infoUser.Country;
-            textbx_city.Text = infoUser.City;
-            maskedTextBox1.Text = infoUser.PhoneNumber;
-            dateTimePicker1.Text = infoUser.DateOfBirth;
-            rbtn_Male.Checked = infoUser.Male;
-            rbtn_Female.Checked = infoUser.Female;
+            //textbx_FName.Text = infoUser.Name;
+            //textbx_surname.Text = infoUser.Surname;
+            //textbx_Patronymic.Text = infoUser.Patronymic;
+            //textbx_Country.Text = infoUser.Country;
+            //textbx_city.Text = infoUser.City;
+            //maskedTextBox1.Text = infoUser.PhoneNumber;
+            //dateTimePicker1.Text = infoUser.DateOfBirth;
+            //rbtn_Male.Checked = infoUser.Male;
+            //rbtn_Female.Checked = infoUser.Female;
+
+            User[] users = null;
+
+            var stringData = File.ReadAllText($"{textbx_NameLoad.Text}.json");
+            users = JsonConvert.DeserializeObject<User[]>(stringData);
+
+            foreach (var user in users)
+            {
+                textbx_FName.Text = user.Name;
+                textbx_surname.Text = user.Surname;
+                textbx_Patronymic.Text = user.Patronymic;
+                textbx_Country.Text = user.Country;
+                textbx_city.Text = user.City;
+                maskedTextBox1.Text = user.PhoneNumber;
+                dateTimePicker1.Text = user.DateOfBirth;
+                rbtn_Male.Checked = user.Male;
+                rbtn_Female.Checked = user.Female;
+            }
+
         }
     }
 }
